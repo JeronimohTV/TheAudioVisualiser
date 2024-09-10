@@ -19,4 +19,10 @@
     <PackageReference Include="NAudio.WinMM" Version="2.2.1" />
   </ItemGroup>
 
+  <ItemGroup>
+    <None Update="SoundFiles\Pr0xima - Carrier Phreakuency.wav">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
 </Project>

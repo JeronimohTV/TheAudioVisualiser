@@ -6,17 +6,21 @@ using NAudio.Wave;
 namespace TheAudioVisualiser
 
 {
+    
     public partial class Form1 : Form
     {
+        //string filePath = Application.StartupPath.;
+
         public Form1()
         {
             InitializeComponent();
         }
 
-        //Plays a specific .wav file. Next step is to listen for auido coming from the PC
+        //Plays a specific .wav file from within the project: Pr0xima - Carrier Phreakuency.wav.
+        //Next step is to listen for Audio coming from the desktop 
         private void btnPlay_Click(object sender, EventArgs e)
         {
-            SoundPlayer splayer = new SoundPlayer(@"D:\04 Music Collection\Pr0xima - Carrier Phreakuency.wav");
+            SoundPlayer splayer = new SoundPlayer(@"SoundFiles\Pr0xima - Carrier Phreakuency.wav");
             splayer.Play();
         }
 
@@ -35,5 +39,7 @@ namespace TheAudioVisualiser
                 comboBox1.Items.Add(caps.ProductName);
             }
         }
+
+
     }
 }
