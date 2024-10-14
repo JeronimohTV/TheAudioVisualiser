@@ -28,17 +28,22 @@
         /// </summary>
         private void InitializeComponent()
         {
+            components = new System.ComponentModel.Container();
             btnPlay = new Button();
             comboBox1 = new ComboBox();
             btnGetDevices = new Button();
             splitContainer1 = new SplitContainer();
+            progressBar1 = new ProgressBar();
+            comboDevices = new ComboBox();
             sourceList = new ListView();
             columnHeader1 = new ColumnHeader();
             columnHeader2 = new ColumnHeader();
+            btnListen = new Button();
             btnExit = new Button();
             btnStop = new Button();
             btnStart = new Button();
             btnSources = new Button();
+            timer = new System.Windows.Forms.Timer(components);
             ((System.ComponentModel.ISupportInitialize)splitContainer1).BeginInit();
             splitContainer1.Panel1.SuspendLayout();
             splitContainer1.Panel2.SuspendLayout();
@@ -80,10 +85,13 @@
             // 
             // splitContainer1.Panel1
             // 
+            splitContainer1.Panel1.Controls.Add(progressBar1);
+            splitContainer1.Panel1.Controls.Add(comboDevices);
             splitContainer1.Panel1.Controls.Add(sourceList);
             // 
             // splitContainer1.Panel2
             // 
+            splitContainer1.Panel2.Controls.Add(btnListen);
             splitContainer1.Panel2.Controls.Add(btnExit);
             splitContainer1.Panel2.Controls.Add(btnStop);
             splitContainer1.Panel2.Controls.Add(btnStart);
@@ -92,13 +100,29 @@
             splitContainer1.SplitterDistance = 491;
             splitContainer1.TabIndex = 4;
             // 
+            // progressBar1
+            // 
+            progressBar1.ForeColor = Color.FromArgb(0, 192, 0);
+            progressBar1.Location = new Point(162, 172);
+            progressBar1.Name = "progressBar1";
+            progressBar1.Size = new Size(326, 101);
+            progressBar1.TabIndex = 3;
+            // 
+            // comboDevices
+            // 
+            comboDevices.FormattingEnabled = true;
+            comboDevices.Location = new Point(12, 172);
+            comboDevices.Name = "comboDevices";
+            comboDevices.Size = new Size(144, 23);
+            comboDevices.TabIndex = 2;
+            // 
             // sourceList
             // 
             sourceList.Columns.AddRange(new ColumnHeader[] { columnHeader1, columnHeader2 });
             sourceList.Location = new Point(0, 0);
             sourceList.MultiSelect = false;
             sourceList.Name = "sourceList";
-            sourceList.Size = new Size(491, 287);
+            sourceList.Size = new Size(491, 155);
             sourceList.TabIndex = 0;
             sourceList.UseCompatibleStateImageBehavior = false;
             sourceList.View = View.Details;
@@ -113,6 +137,15 @@
             columnHeader2.Text = "Channels";
             columnHeader2.Width = 160;
             // 
+            // btnListen
+            // 
+            btnListen.Location = new Point(8, 132);
+            btnListen.Name = "btnListen";
+            btnListen.Size = new Size(204, 23);
+            btnListen.TabIndex = 4;
+            btnListen.Text = "Listen";
+            btnListen.UseVisualStyleBackColor = true;
+            // 
             // btnExit
             // 
             btnExit.Location = new Point(8, 250);
@@ -125,7 +158,7 @@
             // 
             // btnStop
             // 
-            btnStop.Location = new Point(8, 132);
+            btnStop.Location = new Point(8, 88);
             btnStop.Name = "btnStop";
             btnStop.Size = new Size(204, 23);
             btnStop.TabIndex = 2;
@@ -135,7 +168,7 @@
             // 
             // btnStart
             // 
-            btnStart.Location = new Point(8, 103);
+            btnStart.Location = new Point(8, 59);
             btnStart.Name = "btnStart";
             btnStart.Size = new Size(204, 23);
             btnStart.TabIndex = 1;
@@ -152,6 +185,12 @@
             btnSources.Text = "Refresh Sources";
             btnSources.UseVisualStyleBackColor = true;
             btnSources.Click += btnSources_Click;
+            // 
+            // timer
+            // 
+            timer.Enabled = true;
+            timer.Interval = 10;
+            timer.Tick += timer_Tick;
             // 
             // Form1
             // 
@@ -184,5 +223,9 @@
         private Button btnStop;
         private Button btnStart;
         private Button btnSources;
+        private Button btnListen;
+        private System.Windows.Forms.Timer timer;
+        private ComboBox comboDevices;
+        private ProgressBar progressBar1;
     }
 }

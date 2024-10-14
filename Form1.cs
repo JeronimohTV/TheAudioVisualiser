@@ -2,6 +2,7 @@ using System.Media;
 using NAudio;
 using NAudio.Wasapi;
 using NAudio.Wave;
+using NAudio.CoreAudioApi;
 
 namespace TheAudioVisualiser
 
@@ -15,6 +16,10 @@ namespace TheAudioVisualiser
         {
             InitializeComponent();
             sourceList.Items.Clear();
+            MMDeviceEnumerator enumerator = new MMDeviceEnumerator();
+            var devices = enumerator.EnumerateAudioEndPoints(DataFlow.All, DeviceState.Active);
+            comboDevices.Items.AddRange(devices.ToArray());
+
         }
 
         //Plays a specific .wav file from within the project: Pr0xima - Carrier Phreakuency.wav.
@@ -105,6 +110,17 @@ namespace TheAudioVisualiser
         {
             btnStop_Click(sender, e);
             this.Close();
+        }
+
+       
+        private void timer_Tick(object sender, EventArgs e)
+        {
+            if (comboDevices.SelectedItem != null)
+            { 
+                var device = (MMDevice)comboDevices.SelectedItem;
+                progressBar1.Value = (int)(Math.Round(device.AudioMeterInformation.MasterPeakValue * 100));
+
+            }
         }
     }
 }
